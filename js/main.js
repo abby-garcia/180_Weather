@@ -1,6 +1,13 @@
+var api_key = '15f00925d5ace1d8',
+    url = 'http://api.wunderground.com/api/'+ api_key +'/geolookup/q/'+ searchTerm +'.json';
+
 $( "button" ).on( "click", function() {
- getWeather();
+ // getWeather();
 });
+
+
+
+
 
 $(function(){
   $('#search-term').submit(function(event){
@@ -12,15 +19,9 @@ $(function(){
 
 
 
-function getRequest(searchTerm){
-  var params = {
-    s: searchTerm,
-    r: 'json'
-  };
-  url = 'api.openweathermap.org/data/2.5/weather?zip=';
-
+function getRequest(url,callback, params){
   $.getJSON(url, params, function(data){
-    showResults(data.Search);
+      callback(data);
   });
 }
 
@@ -32,3 +33,17 @@ function showResults(results){
   });
   $('#search-results').html(html);
 }
+
+function getStateAndCity(data) {
+  var state = data.state, 
+      city = data.city;
+
+      return 
+}
+
+function takeInput(zipCode){
+  url = 'http://api.wunderground.com/api/15f00925d5ace1d8/geolookup/q/'+ zipCode + '.json';
+  getRequest(url, getStateAndCity;
+}
+
+getRequest(url,showResults)
