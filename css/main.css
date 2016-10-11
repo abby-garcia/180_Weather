@@ -3,11 +3,22 @@
 }
 
 
+.fa-sun-o{
+	color:yellow;
+}
 
 
+.fa-cloud{
+	color:blue;
+}
 
 
+.fa-umbrella{
+	color:purple;
+}
 
 
-
-
+.weatherDisplay{
+	font-size: 80px;
+	
+}

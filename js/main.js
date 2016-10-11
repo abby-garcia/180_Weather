@@ -35,3 +35,26 @@ function getStateAndCity(data) {
       getRequest(url, showWeather); 
 }
 
+
+// 
+
+// function backgroundColors(){
+//   if(currentWeather <= 40){
+//       document.body.style.backgroundColor = "lightblue";
+//     }
+//   else if (currentWeather > 40 && currentWeather <= 60){
+//       document.body.style.backgroundColor = "royalblue";
+
+//   }
+
+//   else if(currentWeather >60 && currentWeather <= 80){
+//       document.body.style.backgroundColor = "darksalmon";
+
+//   }
+
+//   else{
+//       document.body.style.backgroundColor = "crimson";
+//   }
+
+
+// }
