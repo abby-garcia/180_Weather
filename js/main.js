@@ -1,23 +1,12 @@
-var api_key = '15f00925d5ace1d8',
-    url = 'http://api.wunderground.com/api/'+ api_key +'/geolookup/q/'+ searchTerm +'.json';
-
-$( "button" ).on( "click", function() {
- // getWeather();
-});
-
-
-
-
-
 $(function(){
-  $('#search-term').submit(function(event){
-    event.preventDefault();
-    var searchTerm = $('#query').val();
-    getRequest(searchTerm);
-  });
+    var api_key = '15f00925d5ace1d8';
+
+    $('button').on( 'click', function(e) {
+        e.preventDefault();
+        var zipCode = $('input').val();
+        takeInput(zipCode);
+    });
 });
-
-
 
 function getRequest(url,callback, params){
   $.getJSON(url, params, function(data){
@@ -25,25 +14,24 @@ function getRequest(url,callback, params){
   });
 }
 
-function showResults(results){
-  var html = "";
-  $.each(results, function(index,value){
-    html += '<p>' + value.Title + '</p>';
-    console.log(value.Title);
-  });
-  $('#search-results').html(html);
+function takeInput(zipCode){
+  url = 'http://api.wunderground.com/api/15f00925d5ace1d8/geolookup/q/'+ zipCode + '.json';
+  getRequest(url, getStateAndCity);
+}
+
+function showWeather(data){
+     var currentWeather = data.current_observation.temp_f;
+
+     var html = '<p>' + currentWeather + ' F</p>'
+
+    $('#search_results').html(html);
 }
 
 function getStateAndCity(data) {
-  var state = data.state, 
-      city = data.city;
-
-      return 
+    var location = data.location,
+        state = location.state, 
+        city = location.city,
+        url = 'http://api.wunderground.com/api/15f00925d5ace1d8/conditions/q/' + state + '/' + city.replace(" ", "_")  + '.json';
+      getRequest(url, showWeather); 
 }
 
-function takeInput(zipCode){
-  url = 'http://api.wunderground.com/api/15f00925d5ace1d8/geolookup/q/'+ zipCode + '.json';
-  getRequest(url, getStateAndCity;
-}
-
-getRequest(url,showResults)
