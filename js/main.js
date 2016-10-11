@@ -22,7 +22,7 @@ function takeInput(zipCode){
 function showWeather(data){
      var currentWeather = data.current_observation.temp_f;
 
-     var html = '<p>' + currentWeather + ' F</p>'
+     var html = '<p class="weatherDisplay">' + currentWeather + ' F</p>'
 
     $('#search_results').html(html);
 }
