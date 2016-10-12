@@ -25,6 +25,7 @@ function showWeather(data){
      var html = '<p class="weatherDisplay">' + currentWeather + ' F</p>'
 
     $('#search_results').html(html);
+    backgroundBasedOnWeather();
 }
 
 function getStateAndCity(data) {
@@ -36,25 +37,26 @@ function getStateAndCity(data) {
 }
 
 
-// 
-
-// function backgroundColors(){
-//   if(currentWeather <= 40){
-//       document.body.style.backgroundColor = "lightblue";
-//     }
-//   else if (currentWeather > 40 && currentWeather <= 60){
-//       document.body.style.backgroundColor = "royalblue";
-
-//   }
-
-//   else if(currentWeather >60 && currentWeather <= 80){
-//       document.body.style.backgroundColor = "darksalmon";
-
-//   }
-
-//   else{
-//       document.body.style.backgroundColor = "crimson";
-//   }
 
 
-// }
+function backgroundBasedOnWeather(){
+  var currentWeather = parseInt($('#search_results').text().replace(' F',''));
+  console.log(currentWeather);
+  if(currentWeather <= 40){
+
+      document.body.style.backgroundColor = "lightblue";
+    }
+  else if (currentWeather > 40 && currentWeather <= 60){
+      document.body.style.backgroundColor = "royalblue";
+
+  }
+
+  else if(currentWeather >60 && currentWeather <= 80){
+      // i can also do this:  document.body.style.backgroundColor = "darksalmon";
+      $('body').css('background-color', 'darksalmon')
+  }
+
+  else{
+      document.body.style.backgroundColor = "crimson";
+  }
+}
